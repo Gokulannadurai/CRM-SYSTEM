@@ -1,0 +1,519 @@
+================================================================================
+                                NAMING CONVENTIONS
+================================================================================
+
+1.  COMPONENT NAMING:
+    - Use PascalCase for component names (e.g., UserProfile, CustomerList)
+    - Use descriptive names that clearly indicate the component's purpose
+    - Suffix components with their type: Page, Component, Container, Hook, Context
+    - Use index.js for default exports in component folders
+    - Avoid abbreviations unless they are widely understood (e.g., API, URL, HTTP)
+
+2.  FILE & FOLDER NAMING:
+    - Use kebab-case for file and folder names (e.g., user-profile.tsx, customer-list.tsx)
+    - Use PascalCase for component files (e.g., UserProfile.tsx, CustomerList.tsx)
+    - Use camelCase for utility files (e.g., apiUtils.ts, validationUtils.ts)
+    - Use UPPER_SNAKE_CASE for constants files (e.g., API_ENDPOINTS.ts, ROUTES.ts)
+    - Organize files by feature, not by type
+
+3.  VARIABLE & FUNCTION NAMING:
+    - Use camelCase for variables and functions (e.g., userData, handleSubmit)
+    - Use descriptive names that clearly indicate the purpose
+    - Use boolean prefixes for boolean variables (e.g., isLoading, hasError, isVisible)
+    - Use verb-noun combinations for event handlers (e.g., handleClick, onSubmit)
+    - Use meaningful names for state variables (e.g., userList, selectedItem)
+
+4.  CONSTANT NAMING:
+    - Use UPPER_SNAKE_CASE for constants (e.g., API_BASE_URL, DEFAULT_PAGE_SIZE)
+    - Use camelCase for exported constants (e.g., apiEndpoints, validationRules)
+    - Group related constants in separate files
+    - Use descriptive names that clearly indicate the constant's purpose
+
+5.  HOOK NAMING:
+    - Use camelCase for custom hooks (e.g., useUserData, useApiCall)
+    - Prefix with 'use' for all custom hooks
+    - Use descriptive names that indicate the hook's functionality
+    - Avoid generic names like 'useData', 'useState'
+
+================================================================================
+                                COMPONENT STRUCTURE & ORGANIZATION
+================================================================================
+
+6.  COMPONENT STRUCTURE ORDER:
+    - Import statements (React, third-party, internal)
+    - Type definitions and interfaces
+    - Constants and static variables
+    - Component function declaration
+    - Hooks (useState, useEffect, custom hooks)
+    - Event handlers and utility functions
+    - Render logic and JSX
+    - Export statement
+
+7.  COMPONENT SIZE & COMPLEXITY:
+    - Keep components under 200 lines of code
+    - Maximum 5-7 props per component
+    - Extract complex logic into custom hooks
+    - Use composition over inheritance
+    - Break large components into smaller, focused components
+
+8.  COMPONENT RESPONSIBILITY:
+    - Single Responsibility Principle: Each component should have one purpose
+    - Separate presentation from logic using custom hooks
+    - Use container components for data fetching and state management
+    - Use presentational components for UI rendering
+    - Avoid mixing business logic with UI logic
+
+9.  FOLDER ORGANIZATION:
+    - Organize by feature, not by type
+    - Use index files for clean imports
+    - Group related components together
+    - Separate shared components from feature-specific components
+    - Use consistent folder structure across the project
+
+================================================================================
+                                TYPESCRIPT & TYPE SAFETY
+================================================================================
+
+10. TYPE DEFINITIONS:
+    - Define interfaces for all props and state
+    - Use descriptive interface names (e.g., UserProfileProps, ApiResponse)
+    - Export interfaces for reuse across components
+    - Use union types for props that can have multiple values
+    - Avoid using 'any' type - use 'unknown' or specific types
+
+11. PROP TYPING:
+    - Define prop interfaces for all components
+    - Use optional props with '?' for non-required props
+    - Provide default values for optional props
+    - Use generic types for reusable components
+    - Document complex prop types with comments
+
+12. STATE TYPING:
+    - Define proper types for all state variables
+    - Use discriminated unions for complex state
+    - Type custom hooks return values
+    - Use proper typing for async operations
+    - Avoid type assertions unless absolutely necessary
+
+13. API TYPING:
+    - Define interfaces for all API responses
+    - Use consistent naming for API types
+    - Handle loading and error states with proper typing
+    - Type async functions and promises
+    - Use utility types for partial updates
+
+================================================================================
+                                HOOKS & STATE MANAGEMENT
+================================================================================
+
+14. HOOK USAGE RULES:
+    - Only call hooks at the top level of components
+    - Don't call hooks inside loops, conditions, or nested functions
+    - Use custom hooks to extract reusable stateful logic
+    - Keep hooks focused and single-purpose
+    - Use appropriate hook dependencies in useEffect
+
+15. STATE MANAGEMENT:
+    - Use local state for component-specific data
+    - Use context for shared state across components
+    - Use Redux for complex global state management
+    - Avoid prop drilling by using context or state management
+    - Normalize state structure for complex data
+
+16. CUSTOM HOOKS:
+    - Extract reusable logic into custom hooks
+    - Use descriptive names that start with 'use'
+    - Return objects or arrays for multiple values
+    - Handle loading and error states in hooks
+    - Document hook parameters and return values
+
+17. EFFECT HOOKS:
+    - Use useEffect for side effects (API calls, subscriptions)
+    - Clean up subscriptions and timers in useEffect
+    - Use appropriate dependency arrays
+    - Avoid infinite re-renders by properly managing dependencies
+    - Use useCallback and useMemo for performance optimization
+
+================================================================================
+                                REDUX & STATE MANAGEMENT
+================================================================================
+
+18. REDUX STRUCTURE:
+    - Organize Redux store by feature slices
+    - Use Redux Toolkit for simplified Redux setup
+    - Define clear action types and payloads
+    - Use selectors for accessing state
+    - Implement proper error handling in reducers
+
+19. SLICE ORGANIZATION:
+    - Group related state in slices
+    - Use descriptive slice names
+    - Define proper initial state
+    - Implement proper action creators
+    - Use immer for immutable state updates
+
+20. ASYNC OPERATIONS:
+    - Use createAsyncThunk for async operations
+    - Handle loading, success, and error states
+    - Implement proper error handling
+    - Use proper TypeScript typing for async thunks
+    - Avoid side effects in reducers
+
+21. SELECTORS:
+    - Use reselect for memoized selectors
+    - Keep selectors simple and focused
+    - Use proper TypeScript typing for selectors
+    - Avoid complex calculations in selectors
+    - Use selector composition for complex data
+
+================================================================================
+                                PERFORMANCE OPTIMIZATION
+================================================================================
+
+22. COMPONENT OPTIMIZATION:
+    - Use React.memo for expensive components
+    - Use useCallback for event handlers passed as props
+    - Use useMemo for expensive calculations
+    - Avoid creating objects and functions in render
+    - Use proper key props for list items
+
+23. BUNDLE OPTIMIZATION:
+    - Use code splitting with React.lazy and Suspense
+    - Implement dynamic imports for large components
+    - Use tree shaking to eliminate unused code
+    - Optimize images and assets
+    - Use proper chunking strategies
+
+24. RENDERING OPTIMIZATION:
+    - Avoid unnecessary re-renders
+    - Use proper dependency arrays in hooks
+    - Implement virtualization for large lists
+    - Use proper memoization strategies
+    - Monitor component render cycles
+
+25. NETWORK OPTIMIZATION:
+    - Implement proper caching strategies
+    - Use service workers for offline functionality
+    - Optimize API calls with debouncing and throttling
+    - Implement proper error boundaries
+    - Use CDN for static assets
+
+================================================================================
+                                STYLING & UI/UX
+================================================================================
+
+26. STYLING APPROACH:
+    - Use consistent styling approach (CSS Modules, Styled Components, Tailwind)
+    - Follow design system guidelines
+    - Use CSS variables for theming
+    - Implement responsive design patterns
+    - Use proper CSS organization and naming
+
+27. COMPONENT STYLING:
+    - Use consistent spacing and sizing
+    - Implement proper accessibility features
+    - Use semantic HTML elements
+    - Follow WCAG guidelines for accessibility
+    - Implement proper focus management
+
+28. THEME MANAGEMENT:
+    - Use consistent color palette
+    - Implement dark/light mode support
+    - Use proper typography scale
+    - Implement consistent spacing system
+    - Use design tokens for consistency
+
+29. RESPONSIVE DESIGN:
+    - Use mobile-first approach
+    - Implement proper breakpoints
+    - Test on multiple devices and screen sizes
+    - Use flexible layouts and grids
+    - Implement proper touch targets
+
+================================================================================
+                                ERROR HANDLING & VALIDATION
+================================================================================
+
+30. ERROR BOUNDARIES:
+    - Implement error boundaries for component error handling
+    - Provide meaningful error messages
+    - Log errors for debugging
+    - Implement fallback UI for error states
+    - Handle different types of errors appropriately
+
+31. FORM VALIDATION:
+    - Use proper form validation libraries
+    - Implement client-side validation
+    - Provide real-time validation feedback
+    - Handle server-side validation errors
+    - Use proper error message display
+
+32. API ERROR HANDLING:
+    - Handle different HTTP status codes
+    - Implement retry mechanisms for failed requests
+    - Provide user-friendly error messages
+    - Log errors for debugging
+    - Implement proper loading states
+
+33. INPUT VALIDATION:
+    - Validate all user inputs
+    - Sanitize data before processing
+    - Implement proper input constraints
+    - Provide immediate feedback for invalid inputs
+    - Use proper input types and attributes
+
+================================================================================
+                                TESTING STRATEGIES
+================================================================================
+
+34. UNIT TESTING:
+    - Test all component logic and behavior
+    - Use React Testing Library for component testing
+    - Test user interactions and events
+    - Mock external dependencies
+    - Achieve minimum 80% code coverage
+
+35. INTEGRATION TESTING:
+    - Test component integration
+    - Test Redux store interactions
+    - Test API integration
+    - Test routing and navigation
+    - Use proper test data and fixtures
+
+36. E2E TESTING:
+    - Test complete user workflows
+    - Test critical business paths
+    - Use Cypress or Playwright for E2E testing
+    - Test cross-browser compatibility
+    - Implement visual regression testing
+
+37. TEST ORGANIZATION:
+    - Organize tests by feature
+    - Use descriptive test names
+    - Follow AAA pattern (Arrange, Act, Assert)
+    - Use proper test utilities and helpers
+    - Implement proper test cleanup
+
+================================================================================
+                                SECURITY BEST PRACTICES
+================================================================================
+
+38. INPUT SANITIZATION:
+    - Sanitize all user inputs
+    - Prevent XSS attacks
+    - Validate file uploads
+    - Use proper content security policies
+    - Implement proper authentication checks
+
+39. AUTHENTICATION & AUTHORIZATION:
+    - Implement proper JWT token handling
+    - Secure token storage
+    - Implement proper logout functionality
+    - Use HTTPS for all communications
+    - Implement proper role-based access control
+
+40. DATA PROTECTION:
+    - Never store sensitive data in localStorage
+    - Use secure session storage
+    - Implement proper data encryption
+    - Follow GDPR and privacy regulations
+    - Implement proper data retention policies
+
+41. API SECURITY:
+    - Validate all API responses
+    - Implement proper CORS policies
+    - Use secure API endpoints
+    - Implement rate limiting
+    - Monitor for suspicious activities
+
+================================================================================
+                                ACCESSIBILITY (A11Y)
+================================================================================
+
+42. SEMANTIC HTML:
+    - Use proper semantic HTML elements
+    - Implement proper heading hierarchy
+    - Use proper form labels and associations
+    - Implement proper ARIA attributes
+    - Use proper alt text for images
+
+43. KEYBOARD NAVIGATION:
+    - Ensure all interactive elements are keyboard accessible
+    - Implement proper focus management
+    - Use proper tab order
+    - Implement keyboard shortcuts where appropriate
+    - Test with screen readers
+
+44. COLOR & CONTRAST:
+    - Ensure sufficient color contrast
+    - Don't rely solely on color for information
+    - Implement proper color schemes
+    - Test with color blindness simulators
+    - Use proper text sizing and spacing
+
+45. SCREEN READER SUPPORT:
+    - Implement proper ARIA labels
+    - Use proper landmark elements
+    - Provide proper descriptions for complex UI
+    - Test with actual screen readers
+    - Implement proper live regions
+
+================================================================================
+                                CODE QUALITY & LINTING
+================================================================================
+
+46. ESLINT CONFIGURATION:
+    - Use strict ESLint rules
+    - Configure rules for React and TypeScript
+    - Use Prettier for code formatting
+    - Implement pre-commit hooks
+    - Regular linting in CI/CD pipeline
+
+47. CODE REVIEW PROCESS:
+    - Implement mandatory code reviews
+    - Use pull request templates
+    - Review for accessibility issues
+    - Check for performance problems
+    - Ensure adherence to coding standards
+
+48. STATIC ANALYSIS:
+    - Use TypeScript strict mode
+    - Implement proper type checking
+    - Use SonarQube for code quality
+    - Address all critical and major issues
+    - Regular code quality reviews
+
+================================================================================
+                                DEPLOYMENT & BUILD
+================================================================================
+
+49. BUILD OPTIMIZATION:
+    - Optimize bundle size
+    - Implement proper code splitting
+    - Use proper environment configurations
+    - Implement proper source maps
+    - Use proper build tools and configurations
+
+50. DEPLOYMENT STRATEGIES:
+    - Implement proper CI/CD pipelines
+    - Use environment-specific builds
+    - Implement proper rollback strategies
+    - Use CDN for static assets
+    - Implement proper monitoring and logging
+
+51. ENVIRONMENT MANAGEMENT:
+    - Use proper environment variables
+    - Implement proper configuration management
+    - Use different configurations for different environments
+    - Secure sensitive configuration data
+    - Implement proper feature flags
+
+================================================================================
+                                DOCUMENTATION STANDARDS
+================================================================================
+
+52. COMPONENT DOCUMENTATION:
+    - Document all component props
+    - Provide usage examples
+    - Document complex logic
+    - Use Storybook for component documentation
+    - Keep documentation up-to-date
+
+53. API DOCUMENTATION:
+    - Document all API endpoints
+    - Provide request/response examples
+    - Document error scenarios
+    - Use OpenAPI/Swagger for API documentation
+    - Keep API documentation current
+
+54. CODE DOCUMENTATION:
+    - Use JSDoc for function documentation
+    - Document complex algorithms
+    - Provide inline comments for complex logic
+    - Document configuration options
+    - Maintain changelog for releases
+
+================================================================================
+
+================================================================================
+                                COMPLIANCE & GOVERNANCE
+================================================================================
+
+55. LICENSING COMPLIANCE:
+    - Review all third-party dependencies for licensing
+    - Document license requirements
+    - Ensure compliance with open-source licenses
+    - Regular license audits
+    - Maintain license documentation
+
+56. AUDIT TRAILS:
+    - Implement comprehensive audit logging
+    - Track all user interactions
+    - Maintain user action history
+    - Implement data retention policies
+    - Regular audit log reviews
+
+================================================================================
+                                EMERGENCY PROCEDURES
+================================================================================
+
+57. INCIDENT RESPONSE:
+    - Document incident response procedures
+    - Implement monitoring and alerting
+    - Have rollback procedures ready
+    - Maintain emergency contact lists
+    - Regular incident response drills
+
+58. DISASTER RECOVERY:
+    - Implement backup and recovery procedures
+    - Test recovery procedures regularly
+    - Document disaster recovery plans
+    - Maintain off-site backups
+    - Regular disaster recovery testing
+
+================================================================================
+                                COMPLIANCE CHECKLIST
+================================================================================
+
+□ All components follow PascalCase naming convention
+□ All files and folders follow kebab-case naming convention
+□ All variables and functions follow camelCase naming convention
+□ All constants follow UPPER_SNAKE_CASE naming convention
+□ All custom hooks are prefixed with 'use'
+□ All components have proper TypeScript interfaces
+□ All props are properly typed and documented
+□ All state variables have proper types
+□ All API responses have proper interfaces
+□ All components follow single responsibility principle
+□ All components are under 200 lines of code
+□ All complex logic is extracted into custom hooks
+□ All Redux slices are properly organized
+□ All async operations use createAsyncThunk
+□ All selectors are memoized with reselect
+□ All components use React.memo where appropriate
+□ All event handlers use useCallback
+□ All expensive calculations use useMemo
+□ All components implement proper error boundaries
+□ All forms have proper validation
+□ All API calls have proper error handling
+□ All components are accessible (WCAG compliant)
+□ All components have proper semantic HTML
+□ All interactive elements are keyboard accessible
+□ All components have sufficient color contrast
+□ All components have proper ARIA attributes
+□ All components have unit tests with 80%+ coverage
+□ All critical user flows have E2E tests
+□ All user inputs are properly sanitized
+□ All authentication is properly implemented
+□ All sensitive data is properly protected
+□ All API endpoints are secure
+□ All code follows ESLint rules
+□ All code is properly formatted with Prettier
+□ All code reviews are completed before merge
+□ All documentation is up-to-date
+□ All accessibility requirements are met
+□ All security best practices are followed
+□ All performance optimizations are implemented
+□ All compliance requirements are met
+
+================================================================================

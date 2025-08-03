@@ -1,0 +1,202 @@
+graph TB
+    %% Testing Pyramid
+    TestingPyramid[Testing Strategy] --> UnitTests[Unit Tests]
+    TestingPyramid --> IntegrationTests[Integration Tests]
+    TestingPyramid --> E2ETests[End-to-End Tests]
+    
+    %% Unit Testing Layer
+    UnitTests --> ComponentTests[Component Tests]
+    UnitTests --> HookTests[Hook Tests]
+    UnitTests --> UtilityTests[Utility Tests]
+    UnitTests --> ReducerTests[Reducer Tests]
+    UnitTests --> SelectorTests[Selector Tests]
+    
+    %% Component Tests
+    ComponentTests --> UIComponentTests[UI Component Tests]
+    ComponentTests --> PageComponentTests[Page Component Tests]
+    ComponentTests --> FormComponentTests[Form Component Tests]
+    
+    UIComponentTests --> ButtonTest[Button Component Test]
+    UIComponentTests --> InputTest[Input Component Test]
+    UIComponentTests --> SelectTest[Select Component Test]
+    UIComponentTests --> TextAreaTest[TextArea Component Test]
+    UIComponentTests --> CheckboxTest[Checkbox Component Test]
+    UIComponentTests --> FileUploadTest[FileUpload Component Test]
+    UIComponentTests --> LoadingSpinnerTest[LoadingSpinner Test]
+    UIComponentTests --> ConfirmationDialogTest[ConfirmationDialog Test]
+    
+    PageComponentTests --> DashboardTest[Dashboard Page Test]
+    PageComponentTests --> UserListTest[User List Page Test]
+    PageComponentTests --> CustomerListTest[Customer List Page Test]
+    PageComponentTests --> LeadListTest[Lead List Page Test]
+    PageComponentTests --> TaskListTest[Task List Page Test]
+    PageComponentTests --> UserDetailTest[User Detail Page Test]
+    PageComponentTests --> CustomerDetailTest[Customer Detail Page Test]
+    PageComponentTests --> LeadDetailTest[Lead Detail Page Test]
+    PageComponentTests --> TaskDetailTest[Task Detail Page Test]
+    
+    FormComponentTests --> UserFormTest[User Form Test]
+    FormComponentTests --> CustomerFormTest[Customer Form Test]
+    FormComponentTests --> LeadFormTest[Lead Form Test]
+    FormComponentTests --> TaskFormTest[Task Form Test]
+    FormComponentTests --> LoginFormTest[Login Form Test]
+    FormComponentTests --> RegisterFormTest[Register Form Test]
+    
+    %% Hook Tests
+    HookTests --> useDropdownDataTest[useDropdownData Hook Test]
+    HookTests --> useAuthTest[useAuth Hook Test]
+    HookTests --> useApiTest[useApi Hook Test]
+    
+    %% Utility Tests
+    UtilityTests --> FileUtilsTest[File Utilities Test]
+    UtilityTests --> ValidationUtilsTest[Validation Utilities Test]
+    UtilityTests --> FormatUtilsTest[Formatting Utilities Test]
+    
+    %% Redux Tests
+    ReducerTests --> AuthReducerTest[Auth Reducer Test]
+    ReducerTests --> UserReducerTest[User Reducer Test]
+    ReducerTests --> CustomerReducerTest[Customer Reducer Test]
+    ReducerTests --> SalesReducerTest[Sales Reducer Test]
+    ReducerTests --> UIReducerTest[UI Reducer Test]
+    
+    SelectorTests --> AuthSelectorTest[Auth Selector Test]
+    SelectorTests --> UserSelectorTest[User Selector Test]
+    SelectorTests --> CustomerSelectorTest[Customer Selector Test]
+    SelectorTests --> SalesSelectorTest[Sales Selector Test]
+    SelectorTests --> UISelectorTest[UI Selector Test]
+    
+    %% Integration Testing Layer
+    IntegrationTests --> APIIntegrationTests[API Integration Tests]
+    IntegrationTests --> ReduxIntegrationTests[Redux Integration Tests]
+    IntegrationTests --> ComponentIntegrationTests[Component Integration Tests]
+    IntegrationTests --> RoutingTests[Routing Tests]
+    
+    %% API Integration Tests
+    APIIntegrationTests --> AuthAPITest[Auth API Integration Test]
+    APIIntegrationTests --> UserAPITest[User API Integration Test]
+    APIIntegrationTests --> CustomerAPITest[Customer API Integration Test]
+    APIIntegrationTests --> SalesAPITest[Sales API Integration Test]
+    APIIntegrationTests --> RoleAPITest[Role API Integration Test]
+    
+    AuthAPITest --> LoginAPITest[Login API Test]
+    AuthAPITest --> RegisterAPITest[Register API Test]
+    AuthAPITest --> RefreshTokenAPITest[Refresh Token API Test]
+    AuthAPITest --> LogoutAPITest[Logout API Test]
+    
+    UserAPITest --> FetchUsersAPITest[Fetch Users API Test]
+    UserAPITest --> CreateUserAPITest[Create User API Test]
+    UserAPITest --> UpdateUserAPITest[Update User API Test]
+    UserAPITest --> DeleteUserAPITest[Delete User API Test]
+    
+    CustomerAPITest --> FetchCustomersAPITest[Fetch Customers API Test]
+    CustomerAPITest --> CreateCustomerAPITest[Create Customer API Test]
+    CustomerAPITest --> UpdateCustomerAPITest[Update Customer API Test]
+    CustomerAPITest --> DeleteCustomerAPITest[Delete Customer API Test]
+    
+    SalesAPITest --> FetchLeadsAPITest[Fetch Leads API Test]
+    SalesAPITest --> CreateLeadAPITest[Create Lead API Test]
+    SalesAPITest --> UpdateLeadAPITest[Update Lead API Test]
+    SalesAPITest --> DeleteLeadAPITest[Delete Lead API Test]
+    SalesAPITest --> FetchTasksAPITest[Fetch Tasks API Test]
+    SalesAPITest --> CreateTaskAPITest[Create Task API Test]
+    SalesAPITest --> UpdateTaskAPITest[Update Task API Test]
+    SalesAPITest --> DeleteTaskAPITest[Delete Task API Test]
+    
+    %% Redux Integration Tests
+    ReduxIntegrationTests --> AsyncThunkTests[Async Thunk Tests]
+    ReduxIntegrationTests --> StateManagementTests[State Management Tests]
+    ReduxIntegrationTests --> MiddlewareTests[Middleware Tests]
+    
+    AsyncThunkTests --> AuthThunkTest[Auth Thunk Test]
+    AsyncThunkTests --> UserThunkTest[User Thunk Test]
+    AsyncThunkTests --> CustomerThunkTest[Customer Thunk Test]
+    AsyncThunkTests --> SalesThunkTest[Sales Thunk Test]
+    
+    StateManagementTests --> AuthStateTest[Auth State Test]
+    StateManagementTests --> UserStateTest[User State Test]
+    StateManagementTests --> CustomerStateTest[Customer State Test]
+    StateManagementTests --> SalesStateTest[Sales State Test]
+    StateManagementTests --> UIStateTest[UI State Test]
+    
+    %% Component Integration Tests
+    ComponentIntegrationTests --> FormSubmissionTest[Form Submission Test]
+    ComponentIntegrationTests --> DataFlowTest[Data Flow Test]
+    ComponentIntegrationTests --> UserInteractionTest[User Interaction Test]
+    
+    FormSubmissionTest --> UserFormSubmissionTest[User Form Submission Test]
+    FormSubmissionTest --> CustomerFormSubmissionTest[Customer Form Submission Test]
+    FormSubmissionTest --> LeadFormSubmissionTest[Lead Form Submission Test]
+    FormSubmissionTest --> TaskFormSubmissionTest[Task Form Submission Test]
+    
+    DataFlowTest --> APIToComponentTest[API to Component Data Flow Test]
+    DataFlowTest --> ReduxToComponentTest[Redux to Component Data Flow Test]
+    DataFlowTest --> ComponentToAPITest[Component to API Data Flow Test]
+    
+    UserInteractionTest --> PaginationTest[Pagination Interaction Test]
+    UserInteractionTest --> SearchTest[Search Interaction Test]
+    UserInteractionTest --> FilterTest[Filter Interaction Test]
+    UserInteractionTest --> CRUDTest[CRUD Operations Test]
+    
+    %% Routing Tests
+    RoutingTests --> NavigationTest[Navigation Test]
+    RoutingTests --> RouteProtectionTest[Route Protection Test]
+    RoutingTests --> URLParamsTest[URL Parameters Test]
+    
+    %% End-to-End Tests
+    E2ETests --> UserJourneyTests[User Journey Tests]
+    E2ETests --> CriticalPathTests[Critical Path Tests]
+    E2ETests --> CrossBrowserTests[Cross Browser Tests]
+    
+    UserJourneyTests --> AuthenticationJourneyTest[Authentication Journey Test]
+    UserJourneyTests --> UserManagementJourneyTest[User Management Journey Test]
+    UserJourneyTests --> CustomerManagementJourneyTest[Customer Management Journey Test]
+    UserJourneyTests --> SalesManagementJourneyTest[Sales Management Journey Test]
+    
+    CriticalPathTests --> LoginToDashboardTest[Login to Dashboard Test]
+    CriticalPathTests --> CreateLeadTest[Create Lead Test]
+    CriticalPathTests --> CreateTaskTest[Create Task Test]
+    CriticalPathTests --> UserCRUDTest[User CRUD Test]
+    CriticalPathTests --> CustomerCRUDTest[Customer CRUD Test]
+    
+    %% Test Results
+    TestResults[Test Results Summary] --> CoverageResults[Coverage Results]
+    TestResults --> PerformanceResults[Performance Results]
+    TestResults --> QualityResults[Quality Results]
+    
+    CoverageResults --> UnitCoverage[Unit Test Coverage: 85%]
+    CoverageResults --> IntegrationCoverage[Integration Test Coverage: 75%]
+    CoverageResults --> E2ECoverage[E2E Test Coverage: 60%]
+    
+    PerformanceResults --> LoadTimeTest[Page Load Time Test]
+    PerformanceResults --> APIResponseTest[API Response Time Test]
+    PerformanceResults --> MemoryUsageTest[Memory Usage Test]
+    
+    QualityResults --> BugDetection[Bug Detection Rate]
+    QualityResults --> RegressionTest[Regression Test Results]
+    QualityResults --> AccessibilityTest[Accessibility Test Results]
+    
+    %% Test Tools
+    TestTools[Testing Tools] --> Jest[Jest Testing Framework]
+    TestTools --> ReactTestingLibrary[React Testing Library]
+    TestTools --> MSW[MSW for API Mocking]
+    TestTools --> Cypress[Cypress for E2E]
+    TestTools --> Playwright[Playwright for Cross Browser]
+    
+    %% Test Environment
+    TestEnvironment[Test Environment] --> MockAPIs[Mock APIs]
+    TestEnvironment --> TestDatabase[Test Database]
+    TestEnvironment --> CI_CD[CI/CD Pipeline]
+    
+    %% Class Definitions
+    classDef testTypeClass fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    classDef componentClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef apiClass fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef resultClass fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    classDef toolClass fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    
+    %% Apply Classes
+    class UnitTests,IntegrationTests,E2ETests testTypeClass
+    class ComponentTests,HookTests,UtilityTests,ReducerTests,SelectorTests componentClass
+    class APIIntegrationTests,ReduxIntegrationTests,ComponentIntegrationTests,RoutingTests apiClass
+    class TestResults,CoverageResults,PerformanceResults,QualityResults resultClass
+    class TestTools,TestEnvironment toolClass 

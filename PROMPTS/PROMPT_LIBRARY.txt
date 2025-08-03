@@ -1,0 +1,518 @@
+================================================================================
+                                PHASE 1: PROJECT PLANNING & DESIGN
+================================================================================
+
+1. PROJECT REQUIREMENTS DOCUMENT (PRD) GENERATION:
+   ```
+   Act as a Senior Technical Architect and generate a comprehensive, production-grade 
+   Product Requirements Document (PRD) named project.md in Markdown format.
+   
+   The document should cover all critical technical and business aspects. Use your 
+   expertise to infer missing pieces, recommend best practices, and structure everything 
+   clearly for stakeholders including engineers, product managers, and QA.
+   
+   Structure of the PRD (project.md):
+   - Project Overview
+   - Business Goals and Objectives
+   - Stakeholders
+   - Target Users
+   - Functional Requirements (written as user stories with acceptance criteria)
+   - Non-Functional Requirements (performance, scalability, availability, security and maintainability)
+   - Technology Stack Recommendations
+   - Success Metrics and KPIs
+   - Risk Assessment and Mitigation
+   - Timeline and Milestones
+   ```
+
+2. ARCHITECTURE DESIGN GENERATION:
+   ```
+   Based on the PRD, create a comprehensive system architecture design document 
+   named ARCHITECTURE_DESIGN.md.
+   
+   Include:
+   - High-Level System Architecture Diagram
+   - Microservices Architecture (if applicable)
+   - Component Layout (Frontend, Backend, Services, Database)
+   - Technology Stack Selection
+   - Security Architecture
+   - Scalability and Performance Considerations
+   - Deployment Architecture
+   - Integration Patterns
+   - Data Flow Diagrams
+   - API Gateway Design (if applicable)
+   - Monitoring and Logging Architecture
+   ```
+
+3. DATABASE DESIGN GENERATION:
+   ```
+   Create a comprehensive database design document named DATABASE_DESIGN.md.
+   
+   Include:
+   - Entity Relationship Diagrams (ERD)
+   - Database Schema Design
+   - Table Definitions with Columns, Data Types, and Constraints
+   - Primary and Foreign Key Relationships
+   - Indexing Strategy
+   - Normalization (up to 3NF)
+   - Database Migration Scripts
+   - Data Dictionary
+   - Performance Optimization Recommendations
+   - Backup and Recovery Strategy
+   ```
+
+4. API DESIGN GENERATION:
+   ```
+   Create comprehensive API documentation named API_DOCUMENTATION.md.
+   
+   Include:
+   - REST API Endpoints Design
+   - HTTP Methods and Status Codes
+   - Request/Response Payloads
+   - Authentication and Authorization
+   - Error Handling and Response Formats
+   - API Versioning Strategy
+   - Rate Limiting and Throttling
+   - API Testing Examples
+   - Swagger/OpenAPI Documentation
+   - API Security Best Practices
+   ```
+
+5. TASK LIST GENERATION:
+   ```
+   Based on the PRD, Architecture Design, and Database Design, create a comprehensive 
+   task list named TASK_LIST.md with story points and proper ordering.
+   
+   Include:
+   - Backend Development Tasks (with story points)
+   - Frontend Development Tasks (with story points)
+   - Database Implementation Tasks
+   - API Implementation Tasks
+   - Testing Tasks
+   - Deployment Tasks
+   - Dependencies and Predecessors
+   - Estimated Timeline
+   - Resource Allocation
+   - Risk Mitigation Tasks
+   ```
+
+================================================================================
+                                PHASE 2: BACKEND DEVELOPMENT
+================================================================================
+
+6. BACKEND PROJECT SETUP:
+   ```
+   Act as a Senior Java Developer and set up the backend project structure.
+   
+   Follow JAVA_BACKEND_RULES strictly and:
+   - Create Spring Boot project with proper dependencies
+   - Set up project structure (packages, folders)
+   - Configure application.properties/yml
+   - Set up logging configuration
+   - Configure database connection
+   - Set up security configuration
+   - Create base entity classes
+   - Set up exception handling
+   - Configure CORS and security headers
+   - Set up unit testing framework
+   ```
+
+7. ENTITY & REPOSITORY IMPLEMENTATION:
+   ```
+   Implement all entities and repositories following the database design.
+   
+   For each entity:
+   - Create JPA entity with proper annotations
+   - Implement proper relationships and constraints
+   - Create repository interface with custom queries
+   - Add proper indexing annotations
+   - Implement audit fields (@CreatedDate, @LastModifiedDate)
+   - Add validation annotations
+   - Create DTOs for data transfer
+   - Implement proper mapping between entities and DTOs
+   - Add unit tests for repositories
+   ```
+
+8. SERVICE LAYER IMPLEMENTATION:
+   ```
+   Implement business logic in service layer.
+   
+   For each service:
+   - Create service interface and implementation
+   - Implement CRUD operations
+   - Add business logic and validation
+   - Implement proper error handling
+   - Add logging with appropriate levels
+   - Implement caching strategies
+   - Add transaction management
+   - Create custom exceptions
+   - Implement pagination and sorting
+   - Add unit tests for services
+   ```
+
+9. CONTROLLER LAYER IMPLEMENTATION:
+   ```
+   Implement REST controllers for all endpoints.
+   
+   For each controller:
+   - Create controller with proper annotations
+   - Implement all CRUD endpoints
+   - Add proper request/response validation
+   - Implement pagination and filtering
+   - Add proper HTTP status codes
+   - Implement file upload/download
+   - Add API documentation (Swagger)
+   - Implement proper error responses
+   - Add authentication and authorization
+   - Create integration tests
+   ```
+
+10. AUTHENTICATION & AUTHORIZATION:
+    ```
+    Implement comprehensive security system.
+    
+    Include:
+    - JWT token implementation
+    - User authentication service
+    - Role-based access control (RBAC)
+    - Password encryption (BCrypt)
+    - Token refresh mechanism
+    - Security configuration
+    - CORS configuration
+    - Rate limiting implementation
+    - Audit logging
+    - Security testing
+    ```
+
+11. EXCEPTION HANDLING & VALIDATION:
+    ```
+    Implement comprehensive exception handling and validation.
+    
+    Include:
+    - Global exception handler (@ControllerAdvice)
+    - Custom exception classes
+    - Bean validation implementation
+    - Input sanitization
+    - Error response standardization
+    - Validation error handling
+    - Business rule validation
+    - API error documentation
+    - Error logging and monitoring
+    - Exception testing
+    ```
+
+12. TESTING IMPLEMENTATION:
+    ```
+    Implement comprehensive testing strategy.
+    
+    Include:
+    - Unit tests for all services
+    - Integration tests for controllers
+    - Repository layer testing
+    - Security testing
+    - Performance testing
+    - API endpoint testing
+    - Database testing
+    - Mock implementations
+    - Test data management
+    - Test coverage reporting
+    ```
+
+================================================================================
+                                PHASE 3: FRONTEND DEVELOPMENT
+================================================================================
+
+13. FRONTEND PROJECT SETUP:
+    ```
+    Act as a Senior React Developer and set up the frontend project structure.
+    
+    Follow REACT_FRONTEND_RULES strictly and:
+    - Create React project with TypeScript
+    - Set up project structure (components, pages, hooks, utils)
+    - Configure routing (React Router)
+    - Set up state management (Redux Toolkit)
+    - Configure API client (Axios)
+    - Set up styling (Styled Components/Tailwind)
+    - Configure TypeScript strict mode
+    - Set up ESLint and Prettier
+    - Configure testing framework (Jest, RTL)
+    - Set up build and deployment configuration
+    ```
+
+14. COMPONENT ARCHITECTURE IMPLEMENTATION:
+    ```
+    Implement component architecture following React best practices.
+    
+    Include:
+    - Layout components (Header, Sidebar, Footer)
+    - Page components for all features
+    - Reusable UI components (Button, Input, Modal, etc.)
+    - Form components with validation
+    - Data display components (Table, Card, List)
+    - Loading and error state components
+    - Navigation components
+    - Responsive design implementation
+    - Accessibility features (ARIA, keyboard navigation)
+    - Component documentation (Storybook)
+    ```
+
+15. STATE MANAGEMENT IMPLEMENTATION:
+    ```
+    Implement Redux state management for the application.
+    
+    Include:
+    - Redux store configuration
+    - Slice implementations for all features
+    - Async thunks for API calls
+    - Selectors for state access
+    - Middleware configuration
+    - State persistence
+    - Error handling in state
+    - Loading state management
+    - Optimistic updates
+    - State testing
+    ```
+
+16. API INTEGRATION IMPLEMENTATION:
+    ```
+    Implement API integration layer.
+    
+    Include:
+    - API service classes
+    - Request/response interceptors
+    - Error handling and retry logic
+    - Authentication token management
+    - Request caching
+    - API response typing
+    - File upload/download
+    - Real-time updates (WebSocket)
+    - API mocking for development
+    - API testing
+    ```
+
+17. ROUTING & NAVIGATION IMPLEMENTATION:
+    ```
+    Implement comprehensive routing system.
+    
+    Include:
+    - Route configuration
+    - Protected routes
+    - Route guards
+    - Navigation components
+    - Breadcrumb navigation
+    - Deep linking
+    - Route parameters
+    - Query parameters
+    - Route transitions
+    - Navigation testing
+    ```
+
+18. FORM HANDLING & VALIDATION:
+    ```
+    Implement form handling and validation system.
+    
+    Include:
+    - Form library integration (React Hook Form)
+    - Validation schemas
+    - Error message display
+    - Form state management
+    - File upload forms
+    - Multi-step forms
+    - Form submission handling
+    - Form reset functionality
+    - Form accessibility
+    - Form testing
+    ```
+
+19. UI/UX IMPLEMENTATION:
+    ```
+    Implement comprehensive UI/UX features.
+    
+    Include:
+    - Design system implementation
+    - Theme management (light/dark mode)
+    - Responsive design
+    - Animation and transitions
+    - Loading states
+    - Error states
+    - Success feedback
+    - Accessibility features
+    - Mobile optimization
+    - Cross-browser compatibility
+    ```
+
+20. TESTING IMPLEMENTATION:
+    ```
+    Implement comprehensive frontend testing.
+    
+    Include:
+    - Unit tests for components
+    - Integration tests for pages
+    - Redux state testing
+    - API integration testing
+    - User interaction testing
+    - Accessibility testing
+    - Visual regression testing
+    - Performance testing
+    - E2E testing (Cypress/Playwright)
+    - Test coverage reporting
+    ```
+
+================================================================================
+                                PHASE 4: INTEGRATION & TESTING
+================================================================================
+
+21. API INTEGRATION TESTING:
+    ```
+    Test complete API integration between frontend and backend.
+    
+    Include:
+    - End-to-end API testing
+    - Authentication flow testing
+    - Data flow validation
+    - Error handling testing
+    - Performance testing
+    - Security testing
+    - Cross-browser testing
+    - Mobile testing
+    - Accessibility testing
+    - User acceptance testing
+    ```
+
+22. PERFORMANCE OPTIMIZATION:
+    ```
+    Optimize application performance.
+    
+    Include:
+    - Frontend bundle optimization
+    - Backend query optimization
+    - Database performance tuning
+    - Caching implementation
+    - CDN configuration
+    - Image optimization
+    - Code splitting
+    - Lazy loading
+    - Memory leak detection
+    - Performance monitoring
+    ```
+
+23. SECURITY AUDIT & TESTING:
+    ```
+    Conduct comprehensive security audit.
+    
+    Include:
+    - Authentication security testing
+    - Authorization testing
+    - Input validation testing
+    - SQL injection testing
+    - XSS prevention testing
+    - CSRF protection testing
+    - API security testing
+    - Data encryption testing
+    - Security header validation
+    - Vulnerability scanning
+    ```
+
+================================================================================
+                                PHASE 5: DEPLOYMENT & MONITORING
+================================================================================
+
+24. DEPLOYMENT CONFIGURATION:
+    ```
+    Set up deployment configuration.
+    
+    Include:
+    - Docker containerization
+    - Environment configuration
+    - CI/CD pipeline setup
+    - Database migration scripts
+    - Health check endpoints
+    - Monitoring configuration
+    - Logging configuration
+    - Backup configuration
+    - Rollback procedures
+    - Deployment testing
+    ```
+
+25. MONITORING & OBSERVABILITY:
+    ```
+    Implement monitoring and observability.
+    
+    Include:
+    - Application performance monitoring
+    - Error tracking and alerting
+    - Log aggregation and analysis
+    - Health check monitoring
+    - Database monitoring
+    - API monitoring
+    - User analytics
+    - Performance metrics
+    - Alert configuration
+    - Dashboard creation
+    ```
+
+================================================================================
+                                PHASE 6: DOCUMENTATION & HANDOVER
+================================================================================
+
+26. TECHNICAL DOCUMENTATION:
+    ```
+    Create comprehensive technical documentation.
+    
+    Include:
+    - API documentation (Swagger)
+    - Component documentation (Storybook)
+    - Database documentation
+    - Deployment documentation
+    - Troubleshooting guides
+    - Performance tuning guides
+    - Security guidelines
+    - Code style guides
+    - Testing documentation
+    - Maintenance procedures
+    ```
+
+27. USER DOCUMENTATION:
+    ```
+    Create user documentation.
+    
+    Include:
+    - User manual
+    - Feature guides
+    - Troubleshooting guide
+    - FAQ section
+    - Video tutorials
+    - Screenshot documentation
+    - Best practices guide
+    - Training materials
+    - Support contact information
+    - Feedback collection
+    ```
+
+================================================================================
+                                USAGE INSTRUCTIONS
+================================================================================
+
+STEP-BY-STEP EXECUTION:
+1. Start with Phase 1 prompts in order
+2. Complete each prompt before moving to the next
+3. Use the generated documents as input for subsequent prompts
+4. Follow the rules files (JAVA_BACKEND_RULES.txt, REACT_FRONTEND_RULES.txt)
+5. Mark tasks as completed in TASK_LIST.md
+6. Update documentation as implementation progresses
+
+QUALITY ASSURANCE:
+- Review generated code against rules
+- Run tests after each implementation
+- Update documentation with changes
+- Conduct code reviews
+- Validate against requirements
+
+MAINTENANCE:
+- Update prompts based on lessons learned
+- Add new prompts for emerging requirements
+- Refine existing prompts for better results
+- Share successful patterns with team
+
+================================================================================
+                                END OF PROMPT LIBRARY
+================================================================================

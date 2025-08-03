@@ -1,0 +1,30 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="90" fill="url(#logoGradient)" filter="url(#shadow)"/>
+  
+  <!-- CRM Letters -->
+  <text x="100" y="85" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="white">C</text>
+  <text x="100" y="115" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="white">RM</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="70" cy="70" r="4" fill="white" opacity="0.8"/>
+  <circle cx="130" cy="70" r="4" fill="white" opacity="0.8"/>
+  <circle cx="70" cy="130" r="4" fill="white" opacity="0.8"/>
+  <circle cx="130" cy="130" r="4" fill="white" opacity="0.8"/>
+  
+  <!-- Connection Lines -->
+  <line x1="70" y1="70" x2="130" y2="70" stroke="white" stroke-width="2" opacity="0.6"/>
+  <line x1="70" y1="130" x2="130" y2="130" stroke="white" stroke-width="2" opacity="0.6"/>
+  <line x1="70" y1="70" x2="70" y2="130" stroke="white" stroke-width="2" opacity="0.6"/>
+  <line x1="130" y1="70" x2="130" y2="130" stroke="white" stroke-width="2" opacity="0.6"/>
+</svg> 

@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: customer-service
+
+  # Database Configuration
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:validate}
+    show-sql: ${JPA_SHOW_SQL:false}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: ${HIBERNATE_FORMAT_SQL:true}
+        jdbc:
+          batch_size: ${HIBERNATE_BATCH_SIZE:20}
+        order_inserts: true
+        order_updates: true
+
+# Server Configuration
+server:
+  port: 8082
+  servlet:
+    context-path: /
+
+  # Compression Configuration
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+
+# Shared Authentication Library Configuration
+user:
+  service:
+    url: ${USER_SERVICE_URL:http://localhost:8081}
+
+jwt:
+  secret: ${JWT_SECRET:crm-jwt-secret-key-2025-user-service}
+  expiration: ${JWT_EXPIRATION:3600000}
+  refresh-token:
+    expiration: ${JWT_REFRESH_EXPIRATION:86400000}
+
+# Logging Configuration
+logging:
+  level:
+    com.crm.user: ${LOG_LEVEL:INFO}
+    org.springframework.security: ${SECURITY_LOG_LEVEL:INFO}
+    org.hibernate.SQL: ${HIBERNATE_SQL_LOG:DEBUG}
+    org.hibernate.type.descriptor.sql.BasicBinder: ${HIBERNATE_PARAM_LOG:TRACE}
+    com.crm.auth: ${SHARED_AUTH_LOG_LEVEL:DEBUG}
+    com.crm.auth.filter.JwtAuthenticationFilter: DEBUG
+    com.crm.auth.service.JwtBasedUserDetailsService: DEBUG
+    com.crm.auth.service.JwtService: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: ${LOG_FILE_PATH:logs/user-service.log}
+    max-size: ${LOG_MAX_SIZE:10MB}
+    max-history: ${LOG_MAX_HISTORY:30}

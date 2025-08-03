@@ -1,0 +1,180 @@
+graph TB
+    %% Redux Store Structure
+    RootStore[Root Store] --> AuthSlice[Auth Slice]
+    RootStore --> UserSlice[User Slice]
+    RootStore --> CustomerSlice[Customer Slice]
+    RootStore --> SalesSlice[Sales Slice]
+    RootStore --> UISlice[UI Slice]
+    
+    %% Auth Slice State
+    AuthSlice --> AuthState[Auth State]
+    AuthState --> User[Current User]
+    AuthState --> Token[JWT Token]
+    AuthState --> IsAuthenticated[Is Authenticated]
+    AuthState --> UserRole[User Role]
+    AuthState --> Permissions[User Permissions]
+    
+    %% User Slice State
+    UserSlice --> UserState[User State]
+    UserState --> Users[Users List]
+    UserState --> CurrentUser[Current User Data]
+    UserState --> UserLoading[Loading State]
+    UserState --> UserError[Error State]
+    UserState --> UserPagination[Pagination Data]
+    UserPagination --> UserTotalElements[Total Elements]
+    UserPagination --> UserCurrentPage[Current Page]
+    UserPagination --> UserPageSize[Page Size]
+    
+    %% Customer Slice State
+    CustomerSlice --> CustomerState[Customer State]
+    CustomerState --> Customers[Customers List]
+    CustomerState --> CurrentCustomer[Current Customer]
+    CustomerState --> CustomerLoading[Loading State]
+    CustomerState --> CustomerError[Error State]
+    CustomerState --> CustomerPagination[Pagination Data]
+    CustomerPagination --> CustomerTotalElements[Total Elements]
+    CustomerPagination --> CustomerCurrentPage[Current Page]
+    CustomerPagination --> CustomerPageSize[Page Size]
+    
+    %% Sales Slice State
+    SalesSlice --> SalesState[Sales State]
+    SalesState --> Leads[Leads List]
+    SalesState --> Tasks[Tasks List]
+    SalesState --> CurrentLead[Current Lead]
+    SalesState --> CurrentTask[Current Task]
+    SalesState --> SalesLoading[Loading State]
+    SalesState --> SalesError[Error State]
+    SalesState --> LeadPagination[Lead Pagination]
+    SalesState --> TaskPagination[Task Pagination]
+    LeadPagination --> LeadTotalElements[Total Elements]
+    LeadPagination --> LeadCurrentPage[Current Page]
+    LeadPagination --> LeadPageSize[Page Size]
+    TaskPagination --> TaskTotalElements[Total Elements]
+    TaskPagination --> TaskCurrentPage[Current Page]
+    TaskPagination --> TaskPageSize[Page Size]
+    
+    %% UI Slice State
+    UISlice --> UIState[UI State]
+    UIState --> Notifications[Notifications]
+    UIState --> LoadingStates[Loading States]
+    UIState --> ModalStates[Modal States]
+    UIState --> SidebarState[Sidebar State]
+    UIState --> ThemeState[Theme State]
+    
+    %% Async Thunks
+    AuthSlice --> AuthThunks[Auth Async Thunks]
+    AuthThunks --> LoginThunk[loginUser]
+    AuthThunks --> RegisterThunk[registerUser]
+    AuthThunks --> LogoutThunk[logoutUser]
+    AuthThunks --> RefreshTokenThunk[refreshToken]
+    
+    UserSlice --> UserThunks[User Async Thunks]
+    UserThunks --> FetchUsersThunk[fetchUsers]
+    UserThunks --> FetchUserByIdThunk[fetchUserById]
+    UserThunks --> CreateUserThunk[createUser]
+    UserThunks --> UpdateUserThunk[updateUser]
+    UserThunks --> DeleteUserThunk[deleteUser]
+    
+    CustomerSlice --> CustomerThunks[Customer Async Thunks]
+    CustomerThunks --> FetchCustomersThunk[fetchCustomers]
+    CustomerThunks --> FetchCustomerByIdThunk[fetchCustomerById]
+    CustomerThunks --> CreateCustomerThunk[createCustomer]
+    CustomerThunks --> UpdateCustomerThunk[updateCustomer]
+    CustomerThunks --> DeleteCustomerThunk[deleteCustomer]
+    
+    SalesSlice --> SalesThunks[Sales Async Thunks]
+    SalesThunks --> FetchLeadsThunk[fetchLeads]
+    SalesThunks --> FetchLeadByIdThunk[fetchLeadById]
+    SalesThunks --> CreateLeadThunk[createLead]
+    SalesThunks --> UpdateLeadThunk[updateLead]
+    SalesThunks --> DeleteLeadThunk[deleteLead]
+    SalesThunks --> FetchTasksThunk[fetchTasks]
+    SalesThunks --> FetchTaskByIdThunk[fetchTaskById]
+    SalesThunks --> CreateTaskThunk[createTask]
+    SalesThunks --> UpdateTaskThunk[updateTask]
+    SalesThunks --> DeleteTaskThunk[deleteTask]
+    
+    %% Reducers
+    AuthSlice --> AuthReducers[Auth Reducers]
+    AuthReducers --> LoginReducer[login.fulfilled]
+    AuthReducers --> LogoutReducer[logout]
+    AuthReducers --> RefreshReducer[refreshToken.fulfilled]
+    
+    UserSlice --> UserReducers[User Reducers]
+    UserReducers --> FetchUsersReducer[fetchUsers.fulfilled]
+    UserReducers --> CreateUserReducer[createUser.fulfilled]
+    UserReducers --> UpdateUserReducer[updateUser.fulfilled]
+    UserReducers --> DeleteUserReducer[deleteUser.fulfilled]
+    
+    CustomerSlice --> CustomerReducers[Customer Reducers]
+    CustomerReducers --> FetchCustomersReducer[fetchCustomers.fulfilled]
+    CustomerReducers --> CreateCustomerReducer[createCustomer.fulfilled]
+    CustomerReducers --> UpdateCustomerReducer[updateCustomer.fulfilled]
+    CustomerReducers --> DeleteCustomerReducer[deleteCustomer.fulfilled]
+    
+    SalesSlice --> SalesReducers[Sales Reducers]
+    SalesReducers --> FetchLeadsReducer[fetchLeads.fulfilled]
+    SalesReducers --> CreateLeadReducer[createLead.fulfilled]
+    SalesReducers --> UpdateLeadReducer[updateLead.fulfilled]
+    SalesReducers --> DeleteLeadReducer[deleteLead.fulfilled]
+    SalesReducers --> FetchTasksReducer[fetchTasks.fulfilled]
+    SalesReducers --> CreateTaskReducer[createTask.fulfilled]
+    SalesReducers --> UpdateTaskReducer[updateTask.fulfilled]
+    SalesReducers --> DeleteTaskReducer[deleteTask.fulfilled]
+    
+    %% Data Flow
+    Components[React Components] --> useSelector[useSelector Hook]
+    useSelector --> RootStore
+    Components --> useDispatch[useDispatch Hook]
+    useDispatch --> AsyncThunks[Async Thunks]
+    AsyncThunks --> API[API Services]
+    API --> Backend[Backend Services]
+    Backend --> API
+    API --> AsyncThunks
+    AsyncThunks --> Reducers[Reducers]
+    Reducers --> RootStore
+    
+    %% Custom Hooks
+    Components --> CustomHooks[Custom Hooks]
+    CustomHooks --> useDropdownData[useDropdownData]
+    CustomHooks --> useAuth[useAuth]
+    CustomHooks --> useApi[useApi]
+    CustomHooks --> useSelector
+    CustomHooks --> useDispatch
+    
+    %% State Selectors
+    useSelector --> Selectors[State Selectors]
+    Selectors --> AuthSelectors[Auth Selectors]
+    Selectors --> UserSelectors[User Selectors]
+    Selectors --> CustomerSelectors[Customer Selectors]
+    Selectors --> SalesSelectors[Sales Selectors]
+    Selectors --> UISelectors[UI Selectors]
+    
+    %% Middleware
+    RootStore --> Middleware[Redux Middleware]
+    Middleware --> ReduxThunk[Redux Thunk]
+    Middleware --> Logger[Logger Middleware]
+    Middleware --> DevTools[Redux DevTools]
+    
+    %% Persistence
+    RootStore --> Persistence[State Persistence]
+    Persistence --> LocalStorage[Local Storage]
+    Persistence --> SessionStorage[Session Storage]
+    
+    %% Class Definitions
+    classDef storeClass fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    classDef sliceClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef stateClass fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef thunkClass fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    classDef reducerClass fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef hookClass fill:#f1f8e9,stroke:#558b2f,stroke-width:2px
+    classDef apiClass fill:#e0f2f1,stroke:#00695c,stroke-width:2px
+    
+    %% Apply Classes
+    class RootStore storeClass
+    class AuthSlice,UserSlice,CustomerSlice,SalesSlice,UISlice sliceClass
+    class AuthState,UserState,CustomerState,SalesState,UIState stateClass
+    class AuthThunks,UserThunks,CustomerThunks,SalesThunks thunkClass
+    class AuthReducers,UserReducers,CustomerReducers,SalesReducers reducerClass
+    class useSelector,useDispatch,CustomHooks hookClass
+    class API,Backend apiClass 

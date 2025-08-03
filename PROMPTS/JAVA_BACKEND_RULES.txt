@@ -1,0 +1,424 @@
+================================================================================
+                                NAMING CONVENTIONS
+================================================================================
+
+1.  CLASS NAMING:
+    - Use PascalCase for class names (e.g., UserService, CustomerController)
+    - Use descriptive names that clearly indicate the class purpose
+    - Avoid abbreviations unless they are widely understood (e.g., HTTP, URL, API)
+    - Suffix classes with their type: Service, Controller, Repository, Entity, DTO, Config
+
+2.  METHOD NAMING:
+    - Use camelCase for method names (e.g., getUserById, createCustomer)
+    - Use verb-noun combinations for action methods
+    - Use descriptive names that clearly indicate the method's purpose
+    - Avoid generic names like "process", "handle", "doSomething"
+
+3.  VARIABLE NAMING:
+    - Use camelCase for variables (e.g., customerId, userEmail, totalCount)
+    - Use descriptive names that clearly indicate the variable's purpose
+    - Avoid single-letter variables except for loop counters (i, j, k)
+    - Use meaningful names for boolean variables (e.g., isActive, hasPermission)
+
+4.  CONSTANT NAMING:
+    - Use UPPER_SNAKE_CASE for constants (e.g., MAX_RETRY_ATTEMPTS, DEFAULT_PAGE_SIZE)
+    - Group related constants in separate classes or enums
+    - Use descriptive names that clearly indicate the constant's purpose
+
+5.  PACKAGE NAMING:
+    - Use lowercase for package names (e.g., com.company.project.service)
+    - Use reverse domain name convention for base packages
+    - Organize packages by functionality, not by layer
+
+================================================================================
+                                CODE STRUCTURE & ORGANIZATION
+================================================================================
+
+6.  CLASS STRUCTURE ORDER:
+    - Static final fields (constants)
+    - Instance fields
+    - Static initializer blocks
+    - Instance initializer blocks
+    - Constructors
+    - Public methods
+    - Protected methods
+    - Private methods
+    - Inner classes
+
+7.  METHOD LENGTH & COMPLEXITY:
+    - Keep methods under 20 lines of code
+    - Maximum cyclomatic complexity of 10 per method
+    - Extract complex logic into private helper methods
+    - Use early returns to reduce nesting
+
+8.  CLASS RESPONSIBILITY:
+    - Single Responsibility Principle: Each class should have one reason to change
+    - Maximum 200 lines per class
+    - Extract large classes into smaller, focused classes
+    - Use composition over inheritance
+
+9.  PACKAGE ORGANIZATION:
+    - Group related classes in the same package
+    - Use sub-packages for different layers (controller, service, repository)
+    - Keep package structure flat (max 3-4 levels deep)
+    - Use feature-based packaging for large applications
+
+================================================================================
+                                DOCUMENTATION & COMMENTS
+================================================================================
+
+10. CLASS-LEVEL COMMENTS:
+    - Include version, date, and author information
+    - Describe the class purpose and responsibilities
+    - Document any important design decisions or constraints
+    - Use JavaDoc format for all public classes
+
+11. METHOD-LEVEL COMMENTS:
+    - Document all public and protected methods
+    - Include parameter descriptions and return value descriptions
+    - Document exceptions that may be thrown
+    - Use JavaDoc format with @param, @return, @throws tags
+
+12. INLINE COMMENTS:
+    - Comment complex business logic
+    - Explain non-obvious code decisions
+    - Document workarounds or temporary solutions
+    - Keep comments up-to-date with code changes
+
+13. API DOCUMENTATION:
+    - Use OpenAPI/Swagger annotations for REST APIs
+    - Document all endpoints with proper descriptions
+    - Include request/response examples
+    - Document error codes and their meanings
+
+================================================================================
+                                IMPORT STATEMENTS
+================================================================================
+
+14. IMPORT ORGANIZATION:
+    - Never use wildcard imports (*)
+    - Group imports in the following order:
+      1. Java standard library imports
+      2. Third-party library imports
+      3. Application-specific imports
+    - Use static imports sparingly and only for utility methods
+    - Remove unused imports
+
+15. IMPORT BEST PRACTICES:
+    - Import specific classes, not entire packages
+    - Use static imports for frequently used utility methods
+    - Avoid importing classes from implementation packages
+    - Keep imports organized and clean
+
+================================================================================
+                                DEPENDENCY MANAGEMENT
+================================================================================
+
+16. POM.XML BEST PRACTICES:
+    - Use specific versions for all dependencies
+    - Avoid using LATEST or SNAPSHOT versions in production
+    - Group related dependencies together
+    - Use dependency management for version control
+    - Document why each dependency is needed
+
+17. DEPENDENCY VERSIONING:
+    - Use semantic versioning (MAJOR.MINOR.PATCH)
+    - Keep dependencies up-to-date with security patches
+    - Use dependency vulnerability scanning tools
+    - Document breaking changes in dependency updates
+
+18. DEPENDENCY SCOPE:
+    - Use appropriate Maven scopes (compile, provided, runtime, test)
+    - Avoid including test dependencies in production builds
+    - Use optional dependencies sparingly
+    - Document dependency conflicts and resolutions
+
+================================================================================
+                                LOGGING & MONITORING
+================================================================================
+
+19. LOGGER USAGE:
+    - Use SLF4J with Logback for logging
+    - Use appropriate log levels (ERROR, WARN, INFO, DEBUG, TRACE)
+    - Include contextual information in log messages
+    - Use structured logging for better analysis
+    - Avoid logging sensitive information
+
+20. LOGGING BEST PRACTICES:
+    - Use parameterized logging to avoid string concatenation
+    - Include correlation IDs for request tracing
+    - Log method entry/exit for debugging
+    - Use MDC (Mapped Diagnostic Context) for request-scoped data
+    - Configure appropriate log levels for different environments
+
+21. PERFORMANCE LOGGING:
+    - Log method execution times for performance monitoring
+    - Use AOP for cross-cutting logging concerns
+    - Log database query execution times
+    - Monitor memory usage and garbage collection
+
+================================================================================
+                                CONSTANTS & CONFIGURATION
+================================================================================
+
+22. CONSTANTS MANAGEMENT:
+    - Create separate constants classes for different domains
+    - Use enums for related constants
+    - Avoid magic numbers and strings in code
+    - Use meaningful constant names
+    - Group related constants together
+
+23. CONFIGURATION MANAGEMENT:
+    - Use external configuration files (application.properties/yml)
+    - Use environment-specific configurations
+    - Use @ConfigurationProperties for type-safe configuration
+    - Validate configuration values at startup
+    - Use encrypted configuration for sensitive data
+
+24. ENVIRONMENT VARIABLES:
+    - Use environment variables for deployment-specific configuration
+    - Provide default values for optional configurations
+    - Validate required environment variables at startup
+    - Use configuration profiles for different environments
+
+================================================================================
+                                CLEAN CODE PRINCIPLES
+================================================================================
+
+25. CODE READABILITY:
+    - Write self-documenting code
+    - Use meaningful variable and method names
+    - Keep methods small and focused
+    - Use consistent formatting and indentation
+    - Follow the DRY (Don't Repeat Yourself) principle
+
+26. CODE SIMPLICITY:
+    - Avoid complex nested conditions
+    - Use guard clauses for early returns
+    - Extract complex expressions into variables
+    - Use builder pattern for complex object creation
+    - Prefer composition over inheritance
+
+27. ERROR HANDLING:
+    - Use specific exception types
+    - Provide meaningful error messages
+    - Log exceptions with appropriate context
+    - Use custom exceptions for business logic errors
+    - Handle checked exceptions appropriately
+
+================================================================================
+                                SERVICE & CONTROLLER SEPARATION
+================================================================================
+
+28. CONTROLLER RESPONSIBILITIES:
+    - Handle HTTP requests and responses
+    - Validate input parameters
+    - Delegate business logic to services
+    - Handle exceptions and return appropriate HTTP status codes
+    - Use DTOs for request/response objects
+
+29. SERVICE RESPONSIBILITIES:
+    - Implement business logic
+    - Coordinate between multiple repositories
+    - Handle transactions
+    - Implement caching strategies
+    - Provide domain-specific operations
+
+30. REPOSITORY RESPONSIBILITIES:
+    - Handle data access operations
+    - Implement query optimization
+    - Handle database-specific concerns
+    - Provide data mapping between entities and DTOs
+    - Implement pagination and sorting
+
+================================================================================
+                                AUTHENTICATION & SECURITY
+================================================================================
+
+31. ENDPOINT SECURITY:
+    - Implement authentication for all endpoints
+    - Use JWT tokens for stateless authentication
+    - Implement role-based access control (RBAC)
+    - Validate user permissions for each operation
+    - Use HTTPS for all communications
+
+32. INPUT VALIDATION:
+    - Validate all input parameters
+    - Use Bean Validation annotations
+    - Implement custom validators for business rules
+    - Sanitize user inputs to prevent injection attacks
+    - Use parameterized queries to prevent SQL injection
+
+33. SECURITY BEST PRACTICES:
+    - Never log sensitive information
+    - Use secure password hashing (BCrypt, Argon2)
+    - Implement rate limiting for API endpoints
+    - Use secure session management
+    - Regular security audits and penetration testing
+
+================================================================================
+                                DATABASE & ENTITY DESIGN
+================================================================================
+
+34. ENTITY NORMALIZATION:
+    - Follow database normalization principles
+    - Use appropriate data types for columns
+    - Implement proper indexing strategies
+    - Use foreign key constraints for data integrity
+    - Avoid circular dependencies between entities
+
+35. JPA BEST PRACTICES:
+    - Use appropriate fetch types (LAZY vs EAGER)
+    - Implement proper cascade operations
+    - Use @Version for optimistic locking
+    - Implement soft deletes where appropriate
+    - Use @Audited for audit trails
+
+36. QUERY OPTIMIZATION:
+    - Use appropriate indexes for frequently queried columns
+    - Implement pagination for large result sets
+    - Use projection queries to fetch only required data
+    - Avoid N+1 query problems
+    - Use query hints for complex queries
+
+================================================================================
+                                EXCEPTION HANDLING
+================================================================================
+
+37. EXCEPTION STRATEGY:
+    - Use checked exceptions for recoverable errors
+    - Use unchecked exceptions for programming errors
+    - Create custom exception hierarchy
+    - Provide meaningful error messages
+    - Include error codes for client applications
+
+38. GLOBAL EXCEPTION HANDLING:
+    - Implement @ControllerAdvice for global exception handling
+    - Map exceptions to appropriate HTTP status codes
+    - Provide consistent error response format
+    - Log exceptions with appropriate context
+    - Handle validation exceptions separately
+
+39. EXCEPTION DOCUMENTATION:
+    - Document all exceptions that methods can throw
+    - Include exception scenarios in API documentation
+    - Provide recovery suggestions in error messages
+    - Use consistent exception naming conventions
+
+================================================================================
+                                PERFORMANCE OPTIMIZATION
+================================================================================
+
+40. CACHING STRATEGIES:
+    - Implement appropriate caching for frequently accessed data
+    - Use Redis for distributed caching
+    - Implement cache invalidation strategies
+    - Monitor cache hit rates
+    - Use cache annotations (@Cacheable, @CacheEvict)
+
+41. CONCURRENCY HANDLING:
+    - Use appropriate thread pools for async operations
+    - Implement proper synchronization mechanisms
+    - Use CompletableFuture for async programming
+    - Handle concurrent access to shared resources
+    - Use atomic operations where appropriate
+
+42. MEMORY MANAGEMENT:
+    - Monitor memory usage and garbage collection
+    - Use object pooling for expensive objects
+    - Implement proper resource cleanup
+    - Avoid memory leaks in long-running applications
+    - Use appropriate data structures for performance
+
+================================================================================
+                                TESTING STRATEGIES
+================================================================================
+
+43. UNIT TESTING:
+    - Achieve minimum 80% code coverage
+    - Test all public methods
+    - Use meaningful test names
+    - Follow AAA pattern (Arrange, Act, Assert)
+    - Mock external dependencies
+
+44. INTEGRATION TESTING:
+    - Test service layer integration
+    - Test database operations
+    - Test API endpoints
+    - Use test containers for external services
+    - Implement end-to-end testing
+
+45. TEST DATA MANAGEMENT:
+    - Use test data builders
+    - Implement test data factories
+    - Use @TestConfiguration for test-specific beans
+    - Clean up test data after tests
+    - Use database transactions for test isolation
+
+================================================================================
+                                CODE QUALITY & SONAR
+================================================================================
+
+46. SONAR ISSUE RESOLUTION:
+    - Address all critical and major Sonar issues
+    - Maintain code quality gates
+    - Use Sonar for continuous code quality monitoring
+    - Document any suppressed warnings
+    - Regular code quality reviews
+
+47. CODE REVIEW PROCESS:
+    - Implement mandatory code reviews
+    - Use pull request templates
+    - Review for security vulnerabilities
+    - Check for performance issues
+    - Ensure adherence to coding standards
+
+48. STATIC CODE ANALYSIS:
+    - Use multiple static analysis tools
+    - Configure tools for project-specific rules
+    - Integrate analysis in CI/CD pipeline
+    - Address false positives appropriately
+    - Regular tool updates and configuration reviews
+
+===============================================================================
+
+================================================================================
+                                COMPLIANCE CHECKLIST
+================================================================================
+
+□ All classes follow PascalCase naming convention
+□ All methods follow camelCase naming convention
+□ All variables follow camelCase naming convention
+□ All constants follow UPPER_SNAKE_CASE naming convention
+□ No wildcard imports (*) used in any file
+□ All public classes have JavaDoc comments with version, date, and author
+□ All public methods have JavaDoc comments with @param, @return, @throws
+□ All complex business logic has inline comments
+□ All dependencies have specific versions in pom.xml
+□ All classes use proper logger (SLF4J) with appropriate log levels
+□ All constants are defined in separate constants classes
+□ All configuration uses external files (application.properties/yml)
+□ All endpoints have proper authentication and authorization
+□ All input parameters are validated using Bean Validation
+□ All entities follow normalization principles
+□ All exceptions are properly handled and documented
+□ All public methods have unit tests with 80%+ coverage
+□ All Sonar issues are resolved (critical and major)
+□ All code follows clean code principles
+□ All services and controllers are properly separated
+□ All database queries are optimized and indexed
+□ All sensitive data is encrypted and not logged
+□ All API endpoints are documented with OpenAPI/Swagger
+□ All environment variables are properly configured
+□ All error responses follow consistent format
+□ All async operations use appropriate thread pools
+□ All caching strategies are implemented where appropriate
+□ All monitoring and health checks are in place
+□ All deployment procedures are documented
+□ All security best practices are followed
+□ All performance optimizations are implemented
+□ All code reviews are completed before merge
+□ All documentation is up-to-date
+□ All compliance requirements are met
+
+================================================================================

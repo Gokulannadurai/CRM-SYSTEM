@@ -1,0 +1,133 @@
+graph TB
+    %% Main App Structure
+    App[App.tsx] --> Router[React Router]
+    Router --> Layout[Layout Component]
+    
+    %% Layout Components
+    Layout --> Sidebar[Sidebar Navigation]
+    Layout --> Header[Header Component]
+    Layout --> MainContent[Main Content Area]
+    
+    %% Page Components
+    MainContent --> Dashboard[Dashboard Page]
+    MainContent --> AuthPages[Authentication Pages]
+    MainContent --> UserPages[User Management Pages]
+    MainContent --> CustomerPages[Customer Management Pages]
+    MainContent --> SalesPages[Sales Management Pages]
+    
+    %% Authentication Pages
+    AuthPages --> LoginPage[Login Page]
+    AuthPages --> RegisterPage[Register Page]
+    
+    %% User Management Pages
+    UserPages --> UserListPage[User List Page]
+    UserPages --> UserDetailPage[User Detail Page]
+    UserPages --> UserFormPage[User Form Page]
+    
+    %% Customer Management Pages
+    CustomerPages --> CustomerListPage[Customer List Page]
+    CustomerPages --> CustomerDetailPage[Customer Detail Page]
+    CustomerPages --> CustomerFormPage[Customer Form Page]
+    
+    %% Sales Management Pages
+    SalesPages --> LeadListPage[Lead List Page]
+    SalesPages --> LeadDetailPage[Lead Detail Page]
+    SalesPages --> LeadFormPage[Lead Form Page]
+    SalesPages --> TaskListPage[Task List Page]
+    SalesPages --> TaskDetailPage[Task Detail Page]
+    SalesPages --> TaskFormPage[Task Form Page]
+    
+    %% Shared Components
+    MainContent --> SharedComponents[Shared Components]
+    
+    %% UI Components
+    SharedComponents --> UIComponents[UI Components]
+    UIComponents --> Button[Button Component]
+    UIComponents --> Input[Input Component]
+    UIComponents --> Select[Select Component]
+    UIComponents --> TextArea[TextArea Component]
+    UIComponents --> Checkbox[Checkbox Component]
+    UIComponents --> FileUpload[FileUpload Component]
+    UIComponents --> LoadingSpinner[Loading Spinner]
+    UIComponents --> ConfirmationDialog[Confirmation Dialog]
+    
+    %% Data Display Components
+    SharedComponents --> DataComponents[Data Display Components]
+    DataComponents --> InfoRow[Info Row Component]
+    DataComponents --> InfoLabel[Info Label Component]
+    DataComponents --> InfoValue[Info Value Component]
+    DataComponents --> AttachmentList[Attachment List Component]
+    DataComponents --> Pagination[Pagination Component]
+    DataComponents --> PageButton[Page Button Component]
+    
+    %% Form Components
+    SharedComponents --> FormComponents[Form Components]
+    FormComponents --> DropdownField[Dropdown Field Component]
+    FormComponents --> FormValidation[Form Validation]
+    
+    %% Custom Hooks
+    MainContent --> CustomHooks[Custom Hooks]
+    CustomHooks --> useDropdownData[useDropdownData Hook]
+    CustomHooks --> useAuth[useAuth Hook]
+    CustomHooks --> useApi[useApi Hook]
+    
+    %% Redux Store
+    MainContent --> ReduxStore[Redux Store]
+    ReduxStore --> Slices[Redux Slices]
+    Slices --> AuthSlice[Auth Slice]
+    Slices --> UserSlice[User Slice]
+    Slices --> CustomerSlice[Customer Slice]
+    Slices --> SalesSlice[Sales Slice]
+    Slices --> UISlice[UI Slice]
+    
+    %% API Services
+    MainContent --> APIServices[API Services]
+    APIServices --> AuthAPI[Auth API Service]
+    APIServices --> UserAPI[User API Service]
+    APIServices --> CustomerAPI[Customer API Service]
+    APIServices --> SalesAPI[Sales API Service]
+    APIServices --> RoleAPI[Role API Service]
+    
+    %% Styling
+    MainContent --> Styling[Styling System]
+    Styling --> StyledComponents[Styled Components]
+    Styling --> GlobalStyles[Global Styles]
+    Styling --> Theme[Theme Configuration]
+    
+    %% Utilities
+    MainContent --> Utilities[Utility Functions]
+    Utilities --> FileUtils[File Utilities]
+    Utilities --> ValidationUtils[Validation Utilities]
+    Utilities --> FormatUtils[Formatting Utilities]
+    
+    %% Component Relationships
+    Dashboard --> SharedComponents
+    UserListPage --> SharedComponents
+    CustomerListPage --> SharedComponents
+    LeadListPage --> SharedComponents
+    TaskListPage --> SharedComponents
+    
+    %% Data Flow
+    APIServices --> ReduxStore
+    ReduxStore --> PageComponents
+    CustomHooks --> APIServices
+    PageComponents --> CustomHooks
+    
+    %% Styling Application
+    StyledComponents --> PageComponents
+    GlobalStyles --> MainContent
+    Theme --> StyledComponents
+    
+    %% Class Definitions
+    classDef pageClass fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef componentClass fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef serviceClass fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef hookClass fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef utilityClass fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    
+    %% Apply Classes
+    class Dashboard,UserListPage,CustomerListPage,LeadListPage,TaskListPage,UserDetailPage,CustomerDetailPage,LeadDetailPage,TaskDetailPage,UserFormPage,CustomerFormPage,LeadFormPage,TaskFormPage,LoginPage,RegisterPage pageClass
+    class Button,Input,Select,TextArea,Checkbox,FileUpload,LoadingSpinner,ConfirmationDialog,InfoRow,InfoLabel,InfoValue,AttachmentList,Pagination,PageButton,DropdownField,FormValidation componentClass
+    class AuthAPI,UserAPI,CustomerAPI,SalesAPI,RoleAPI serviceClass
+    class useDropdownData,useAuth,useApi hookClass
+    class FileUtils,ValidationUtils,FormatUtils utilityClass 
